@@ -41,3 +41,4 @@ Auth::routes();
 Route::get('/dashboard', 'DashboardController@index');
 
 
+Route::get('/dashboard/pdf', 'DashboardController@fun_pdf' );

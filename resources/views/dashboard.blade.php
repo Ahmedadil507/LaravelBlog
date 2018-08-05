@@ -14,6 +14,9 @@
                         </div>
                     @endif
                     <a href="/posts/create" class="btn btn-primary "> Create Post </a>
+                    <a href="/dashboard/pdf" class="btn btn-primary "> downloadpdf </a>
+
+                    <br><br>
                     <h3> Your Blog Posts </h3>
                     @if(count($posts) > 0)
                         <table class="table table-striped">
@@ -21,6 +24,8 @@
                                 <th>Title</th>
                                 <th></th>
                                 <th></th>
+                                <th>By</th>
+                                <th>Created At</th>
                                 
 
                             </tr>
@@ -37,7 +42,10 @@
                                                 {!!form::close()!!}
 
                                         </td>
-                                        
+                                       
+                                        <td>{{$post->user->name}}</td>
+                                        <td>{{$post->created_at}}</td>
+
         
                                 </tr>
                                 @endforeach

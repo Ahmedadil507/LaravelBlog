@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User; 
 use App\Post;
+USE PDF;
 
 class DashboardController extends Controller
 {
@@ -28,5 +29,12 @@ class DashboardController extends Controller
         $user_id = auth()->user()->id;
         $user = User::find($user_id);
         return view('dashboard')->with('posts', $user->posts);
+    }
+
+    public function fun_pdf()
+    {
+        $posts = Post::all();
+        $pdf = PDF::loadView('dashboard' , ['posts'=> $posts]);
+        return $pdf->download('data.pdf');
     }
 }
